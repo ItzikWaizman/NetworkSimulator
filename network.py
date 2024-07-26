@@ -13,7 +13,7 @@ class User:
     def __init__(self, user_id, source, destination, path):
         self.user_id = user_id
         self.source = source
-        self. destination = destination
+        self.destination = destination
         self.path = path
         self.rate = 0
     

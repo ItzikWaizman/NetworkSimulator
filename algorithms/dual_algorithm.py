@@ -38,3 +38,4 @@ class DualAlgorithm(Algorithm):
                 rate_history[user.user_id].append(user.rate)
 
         return rate_history
+
