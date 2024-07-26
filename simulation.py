@@ -1,6 +1,7 @@
 from config import Parameters
 from network import Network
 from algorithms.primal_algorithm import PrimalAlgorithm
+from algorithms.dual_algorithm import DualAlgorithm
 import matplotlib.pyplot as plt
 
 class Simulator:
@@ -16,10 +17,13 @@ class Simulator:
         step_size = self.params['step_size']
         normalization_factor = self.params['normalization_factor']
         max_rate_update = self.params['max_rate_update']
+        rate_upper_bound = self.params['rate_upper_bound']
         algorithm_type = self.params['algorithm']
-
+        
         if algorithm_type == 'primal':
             return PrimalAlgorithm(self.network, alpha, step_size, normalization_factor, beta, max_rate_update)
+        elif algorithm_type == 'dual':
+            return DualAlgorithm(self.network, alpha, step_size, rate_upper_bound)
         else:
             raise ValueError(f"Unsupported algorithm type: {algorithm_type}")
 
@@ -45,12 +49,12 @@ class Simulator:
             plt.plot(rates, label=f'User {user_id}')
         plt.xlabel('Iterations')
         plt.ylabel('Rate')
-        plt.title('User Rates over Iterations')
+        plt.title(f'User Rates over Iterations (Alpha = {self.params['alpha']})')
         plt.legend()
         plt.grid(True)
         plt.show()
 
-    def post_iteration(self):
+    def post_simulation(self):
         print("Final Rates:")
         for user in self.network.users:
             print(f"User {user.user_id}: Rate = {user.rate}")

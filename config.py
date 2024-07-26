@@ -30,20 +30,26 @@ class Parameters:
         """ Simulation Parameters """
 
         # alpha - Nonegative number for the alpha-fairness criterion.
-        self.params['alpha'] = 2
+        self.params['alpha'] = 50
 
         # iterations - Integer describing the upper limit of the number of iterations.
         self.params['iterations'] = 20000
 
         # step_size - Float describing the step size in gradient descent/ascent algorithms.
-        self.params['step_size'] = 5e-4
+        self.params['step_size'] = 5e12 #5e-1
 
         # algorithm - String indicating the type of algorithm. Supported algorithms are 'primal' and 'dual'.
-        self.params['algorithm'] = 'primal'
+        self.params['algorithm'] = 'dual'
 
-        self.params['max_rate_update'] = 0.3
- 
-        """" Barrier function parameters """
+        """" Primal algorithm parameters """
+        
         # normalization_factor - Float. Constant to normalize barrier function values in the feasible region.
         self.params['normalization_factor'] = 4e-6
+        
         self.params['beta'] = 20
+
+        self.params['max_rate_update'] = 0.1
+
+        """ Dual algorithm parameters """
+        
+        self.params['rate_upper_bound'] = 100

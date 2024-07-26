@@ -15,6 +15,6 @@ def main():
     simulator.run_simulation()
     
     # Initialize and run the algorithm specified in the parameters
-    simulator.post_iteration()
+    simulator.post_simulation()
 if __name__ == "__main__":
     main()

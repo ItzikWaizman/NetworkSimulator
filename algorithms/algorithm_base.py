@@ -7,7 +7,7 @@ class Algorithm(ABC):
         self.step_size = step_size
 
     @abstractmethod
-    def calc_rate_update(self, user):
+    def update(self, user):
         """Update the rates for the network based on the algorithm's logic."""
         pass
 

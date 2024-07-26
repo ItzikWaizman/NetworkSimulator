@@ -54,6 +54,6 @@ class Network:
     def get_total_rate_on_link(self, link):
         total_rate = 0
         for user in self.users:
-            if (link.node1, link.node2) in user.path:
+            if (link.node1, link.node2) in user.path or (link.node2, link.node1) in user.path:
                 total_rate += user.rate
         return total_rate
