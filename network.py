@@ -32,23 +32,31 @@ class Network:
         self.users = [User(user_id=user['user_id'],
                            source=user['source'],
                            destination=user['destination'],
-                           path=[tuple(p) for p in user['path']]) for user in params['users']]
+                           path=[tuple(p) for p in user['path']] if user['path'] is not None else None) for user in params['users']]
         
         self.graph = self.build_graph()
         self.position = None  # To store positions for visualization
+        self.shortest_path_algorithm = params['shortest_path_algorithm']
     
+    def get_link_price(self, link):
+        return 1 / link.capacity
+
     def build_graph(self):
         G = nx.Graph()
         for link in self.links:
-            G.add_edge(link.node1, link.node2, capacity=link.capacity)
+            G.add_edge(link.node1, link.node2, weight=self.get_link_price(link))
         return G
 
     def visualize_network(self):
         if self.position is None:
             self.position = nx.spring_layout(self.graph)  # Spring layout for better visualization
-        capacities = nx.get_edge_attributes(self.graph, 'capacity')
+        
+        # Get the edge capacities and format them to three decimal places
+        weights = nx.get_edge_attributes(self.graph, 'weight')
+        formatted_weights = {k: f"{v:.3f}" for k, v in weights.items()}
+        
         nx.draw(self.graph, self.position, with_labels=True, node_size=700, node_color="lightblue", font_size=10)
-        nx.draw_networkx_edge_labels(self.graph, self.position, edge_labels=capacities)
+        nx.draw_networkx_edge_labels(self.graph, self.position, edge_labels=formatted_weights)
         plt.show()
 
     def get_total_rate_on_link(self, link):

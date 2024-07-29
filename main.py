@@ -19,8 +19,6 @@ def main(config_path=None):
     # Initialize and run the algorithm specified in the parameters
     simulator.post_simulation()
 
-    Params.save_params_to_file('simulations_config_files/dual_alpha1.json')
-
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Network Simulator')
