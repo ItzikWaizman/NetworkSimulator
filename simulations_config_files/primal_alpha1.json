@@ -1,0 +1,130 @@
+{
+    "nodes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+    ],
+    "links": [
+        {
+            "node1": 0,
+            "node2": 1,
+            "capacity": 1
+        },
+        {
+            "node1": 1,
+            "node2": 2,
+            "capacity": 1
+        },
+        {
+            "node1": 2,
+            "node2": 3,
+            "capacity": 1
+        },
+        {
+            "node1": 3,
+            "node2": 4,
+            "capacity": 1
+        },
+        {
+            "node1": 4,
+            "node2": 5,
+            "capacity": 1
+        }
+    ],
+    "users": [
+        {
+            "user_id": 0,
+            "source": 0,
+            "destination": 5,
+            "path": [
+                [
+                    0,
+                    1
+                ],
+                [
+                    1,
+                    2
+                ],
+                [
+                    2,
+                    3
+                ],
+                [
+                    3,
+                    4
+                ],
+                [
+                    4,
+                    5
+                ]
+            ]
+        },
+        {
+            "user_id": 1,
+            "source": 0,
+            "destination": 1,
+            "path": [
+                [
+                    0,
+                    1
+                ]
+            ]
+        },
+        {
+            "user_id": 2,
+            "source": 1,
+            "destination": 2,
+            "path": [
+                [
+                    1,
+                    2
+                ]
+            ]
+        },
+        {
+            "user_id": 3,
+            "source": 2,
+            "destination": 3,
+            "path": [
+                [
+                    2,
+                    3
+                ]
+            ]
+        },
+        {
+            "user_id": 4,
+            "source": 3,
+            "destination": 4,
+            "path": [
+                [
+                    3,
+                    4
+                ]
+            ]
+        },
+        {
+            "user_id": 5,
+            "source": 4,
+            "destination": 5,
+            "path": [
+                [
+                    4,
+                    5
+                ]
+            ]
+        }
+    ],
+    "shortest_path_algorithm": "dijkstra",
+    "alpha": 1,
+    "iterations": 10000,
+    "step_size": 0.0005,
+    "algorithm": "primal",
+    "normalization_factor": 3e-06,
+    "beta": 20,
+    "max_rate_update": 0.1,
+    "rate_upper_bound": 100
+}
